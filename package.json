@@ -13,5 +13,8 @@
     "plugin"
   ],
   "author": "mkt <kontakt@markus-kottlaender.de>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sc2-sdk": "^1.0.2"
+  }
 }
