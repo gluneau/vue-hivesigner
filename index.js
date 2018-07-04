@@ -16,11 +16,19 @@ var VueSteemConnect = {
       scope: _options.scope || ['vote', 'comment']
     });
 
-    Vue.prototype.$steemconnect = _sc2Sdk2.default.Initialize({
+    var api = _sc2Sdk2.default.Initialize({
       app: options.app,
       callbackURL: options.redirectUrl,
       scope: options.scope
     });
+
+    Vue.prototype.$steemconnect = api;
+    // setting the api directly as the value does not work, methods are removed (why? serialization?)
+    Vue.SteemConnect = function () {
+      return api;
+    };
+
+    Vue.SteemConnect = () => api
   }
 };
 
