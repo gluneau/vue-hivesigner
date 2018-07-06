@@ -27,8 +27,6 @@ var VueSteemConnect = {
     Vue.SteemConnect = function () {
       return api;
     };
-
-    Vue.SteemConnect = () => api
   }
 };
 
