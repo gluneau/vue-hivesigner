@@ -18,7 +18,7 @@ var VueSteemConnect = {
 
     var api = _sc2Sdk2.default.Initialize({
       app: options.app,
-      callbackURL: options.redirectUrl,
+      callbackURL: options.callbackURL,
       scope: options.scope
     });
 
