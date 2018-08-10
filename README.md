@@ -1,6 +1,6 @@
 # VueSteemConnect
 
-For now this plugin is very simple and really just a wrapper to install SteemConnect and make it accessible in one step.
+This plugin provides a very simple way to integrate Steemconnect in your Vue.js project. It also provides a Vuex module to handle the user object and login/logout.
 
 ```
 npm i --save vue-steemconnect
