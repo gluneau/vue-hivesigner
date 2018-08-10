@@ -19,7 +19,7 @@ var VueSteemConnect = {
     var api = _sc2Sdk2.default.Initialize({
       app: options.app,
       callbackURL: options.callbackURL,
-      scope: options.scope
+      scope: options.scope || ['vote', 'comment']
     });
 
     Vue.prototype.$steemconnect = api;
