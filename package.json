@@ -1,6 +1,6 @@
 {
   "name": "vue-steemconnect",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "SteemConnect plugin for Vue.js",
   "main": "dist/index.js",
   "scripts": {
