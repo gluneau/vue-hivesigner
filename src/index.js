@@ -39,8 +39,7 @@ const VueSteemConnect = {
       actions: {
         login ({ commit, dispatch, state }) {
           return new Promise((resolve, reject) => {
-            // user will be set, when coming from auth page
-            // but not if accessed this page directly
+            // don't do anything if user data is already set
             if (!state.user) {
               // in that case we look for an access token in localStorage
               const accessToken = localStorage.getItem('access_token')
