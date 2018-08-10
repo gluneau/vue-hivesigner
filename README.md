@@ -12,7 +12,7 @@ import VueSteemConnect from 'vue-steemconnect'
 
 Vue.use(VueSteemConnect, {
   app: 'appname',
-  redirectUrl: 'http://localhost:3000'
+  callbackURL: 'http://localhost:3000'
   scope: ['vote', 'comment']
 })
 
@@ -27,6 +27,36 @@ this.$steemconnect.getLoginURL()
 this.$steemconnect.vote(...)
 this.$steemconnect.comment(...)
 ...
+```
+
+## Store Module
+
+If you're using Vuex, this plugin provides a module to handle login and logout.
+
+```
+import Vue from 'vue'
+
+const store = new Vuex.Store({
+  state: {
+    ...
+  },
+  modules: {
+    steemconnect: Vue.SteemConnectStore
+  }
+})
+```
+
+Now you can access the user object like this:
+
+```
+// in component
+this.$store.state.steemconnect.user
+```
+
+To login/logout use:
+```
+this.$store.dispatch('login')
+this.$store.dispatch('logout')
 ```
 
 #### Nuxt.js
