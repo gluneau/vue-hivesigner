@@ -21,11 +21,15 @@ const VueSteemConnect = {
     // store module
     Vue.SteemConnectStore = {
       state: {
-        user: null // steemconnect user
+        user: null, // steemconnect user
+        accessToken: null // steemconnect access token
       },
       getters: {
         user (state) {
           return state.user
+        },
+        accessToken (state) {
+          return state.accessToken
         }
       },
       mutations: {
@@ -34,6 +38,9 @@ const VueSteemConnect = {
         },
         logout (state) {
           state.user = null
+        },
+        setAccessToken (state, accessToken) {
+          state.accessToken = accessToken
         }
       },
       actions: {
@@ -51,6 +58,7 @@ const VueSteemConnect = {
                   else {
                     // save user object in store
                     commit('login', user)
+                    commit('setAccessToken', accessToken)
                     resolve()
                   }
                 })
@@ -62,6 +70,7 @@ const VueSteemConnect = {
           // remove access token and unset user in store
           localStorage.removeItem('access_token')
           commit('logout')
+          commit('setAccessToken', null)
         }
       }
     }
