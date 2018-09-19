@@ -30,6 +30,7 @@ var VueSteemConnect = {
 
     // store module
     Vue.SteemConnectStore = {
+      namespaced: true,
       state: {
         user: null, // steemconnect user
         accessToken: null // steemconnect access token
