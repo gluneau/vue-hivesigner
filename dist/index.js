@@ -31,11 +31,15 @@ var VueSteemConnect = {
     // store module
     Vue.SteemConnectStore = {
       state: {
-        user: null // steemconnect user
+        user: null, // steemconnect user
+        accessToken: null // steemconnect access token
       },
       getters: {
         user: function user(state) {
           return state.user;
+        },
+        accessToken: function accessToken(state) {
+          return state.accessToken;
         }
       },
       mutations: {
@@ -44,6 +48,9 @@ var VueSteemConnect = {
         },
         logout: function logout(state) {
           state.user = null;
+        },
+        setAccessToken: function setAccessToken(state, accessToken) {
+          state.accessToken = accessToken;
         }
       },
       actions: {
@@ -53,8 +60,7 @@ var VueSteemConnect = {
               state = _ref.state;
 
           return new Promise(function (resolve, reject) {
-            // user will be set, when coming from auth page
-            // but not if accessed this page directly
+            // don't do anything if user data is already set
             if (!state.user) {
               // in that case we look for an access token in localStorage
               var accessToken = localStorage.getItem('access_token');
@@ -65,6 +71,7 @@ var VueSteemConnect = {
                   if (err) reject(err);else {
                     // save user object in store
                     commit('login', user);
+                    commit('setAccessToken', accessToken);
                     resolve();
                   }
                 });
@@ -78,6 +85,7 @@ var VueSteemConnect = {
           // remove access token and unset user in store
           localStorage.removeItem('access_token');
           commit('logout');
+          commit('setAccessToken', null);
         }
       }
     };
