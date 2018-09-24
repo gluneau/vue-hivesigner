@@ -11,6 +11,7 @@ import Vue from 'vue'
 import VueSteemConnect from 'vue-steemconnect'
 
 Vue.use(VueSteemConnect, {
+  baseURL: 'https://steemconnect.com',
   app: 'appname',
   callbackURL: 'http://localhost:3000'
   scope: ['vote', 'comment']
