@@ -1,4 +1,5 @@
-import sc2 from 'sc2-sdk'
+const sc2 = require('sc2-sdk');
+import { Initialize } from 'sc2-sdk';
 
 const VueSteemConnect = {
   install(Vue, _options) {

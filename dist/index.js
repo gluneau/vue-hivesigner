@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _sc2Sdk = require('sc2-sdk');
 
-var _sc2Sdk2 = _interopRequireDefault(_sc2Sdk);
+var sc2 = require('sc2-sdk');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var VueSteemConnect = {
   install: function install(Vue, _options) {
@@ -16,7 +15,7 @@ var VueSteemConnect = {
       scope: _options.scope || ['vote', 'comment']
     });
 
-    var api = _sc2Sdk2.default.Initialize({
+    var api = sc2.Initialize({
       baseURL: options.baseURL,
       app: options.app,
       callbackURL: options.callbackURL,
