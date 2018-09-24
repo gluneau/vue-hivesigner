@@ -7,6 +7,7 @@ const VueSteemConnect = {
     })
 
     const api = sc2.Initialize({
+      baseURL: options.baseURL,
       app: options.app,
       callbackURL: options.callbackURL,
       scope: options.scope || ['vote', 'comment']
