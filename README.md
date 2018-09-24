@@ -11,7 +11,6 @@ import Vue from 'vue'
 import VueSteemConnect from 'vue-steemconnect'
 
 Vue.use(VueSteemConnect, {
-  baseURL: 'https://steemconnect.com',
   app: 'appname',
   callbackURL: 'http://localhost:3000'
   scope: ['vote', 'comment']
@@ -52,12 +51,17 @@ Now you can access the user object like this:
 ```
 // in component
 this.$store.state.steemconnect.user
+
+// or if you want to use the mapGetters helper
+computed: {
+  ...mapGetters('steemconnect', ['user'])
+} 
 ```
 
 To login/logout use:
 ```
-this.$store.dispatch('login')
-this.$store.dispatch('logout')
+this.$store.dispatch('steemconnect/login')
+this.$store.dispatch('steemconnect/logout')
 ```
 
 #### Nuxt.js
