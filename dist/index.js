@@ -17,6 +17,7 @@ var VueSteemConnect = {
     });
 
     var api = _sc2Sdk2.default.Initialize({
+      baseURL: options.baseURL,
       app: options.app,
       callbackURL: options.callbackURL,
       scope: options.scope || ['vote', 'comment']
