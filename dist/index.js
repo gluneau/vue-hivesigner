@@ -11,7 +11,7 @@ exports.default = {
       scope: _options.scope || ['vote', 'comment']
     });
 
-    var api = steemconnect.Client({
+    var api = new steemconnect.Client({
       app: options.app,
       callbackURL: options.callbackURL,
       scope: options.scope || ['vote', 'comment']
