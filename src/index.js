@@ -1,14 +1,12 @@
-const sc2 = require('sc2-sdk');
-import { Initialize } from 'sc2-sdk';
+const steemconnect = require('steemconnect');
 
-const VueSteemConnect = {
+export default {
   install(Vue, _options) {
     const options = Object.assign({}, _options, {
       scope: _options.scope || ['vote', 'comment']
     })
 
-    const api = sc2.Initialize({
-      baseURL: options.baseURL || 'https://steemconnect.com',
+    const api = steemconnect.Client({
       app: options.app,
       callbackURL: options.callbackURL,
       scope: options.scope || ['vote', 'comment']
@@ -79,5 +77,3 @@ const VueSteemConnect = {
     }
   }
 }
-
-export default VueSteemConnect
