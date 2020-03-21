@@ -3,20 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var steemconnect = require('steemconnect');
 
-var _sc2Sdk = require('sc2-sdk');
-
-var _sc2Sdk2 = _interopRequireDefault(_sc2Sdk);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var VueSteemConnect = {
+exports.default = {
   install: function install(Vue, _options) {
     var options = Object.assign({}, _options, {
       scope: _options.scope || ['vote', 'comment']
     });
 
-    var api = _sc2Sdk2.default.Initialize({
+    var api = new steemconnect.Client({
       app: options.app,
       callbackURL: options.callbackURL,
       scope: options.scope || ['vote', 'comment']
@@ -92,5 +87,3 @@ var VueSteemConnect = {
     };
   }
 };
-
-exports.default = VueSteemConnect;
