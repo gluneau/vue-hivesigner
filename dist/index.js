@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var steemconnect = require('steemconnect');
+var hivesigner = require('hivesigner');
 
 exports.default = {
   install: function install(Vue, _options) {
@@ -11,24 +11,24 @@ exports.default = {
       scope: _options.scope || ['vote', 'comment']
     });
 
-    var api = new steemconnect.Client({
+    var api = new hivesigner.Client({
       app: options.app,
       callbackURL: options.callbackURL,
       scope: options.scope || ['vote', 'comment']
     });
 
-    Vue.prototype.$steemconnect = api;
+    Vue.prototype.$hivesigner = api;
     // setting the api directly as the value does not work, methods are removed (why? serialization?)
-    Vue.SteemConnect = function () {
+    Vue.HiveSigner = function () {
       return api;
     };
 
     // store module
-    Vue.SteemConnectStore = {
+    Vue.HiveSignerStore = {
       namespaced: true,
       state: {
-        user: null, // steemconnect user
-        accessToken: null // steemconnect access token
+        user: null, // hivesigner user
+        accessToken: null // hivesigner access token
       },
       getters: {
         user: function user(state) {
@@ -62,8 +62,8 @@ exports.default = {
               var accessToken = localStorage.getItem('access_token');
               if (accessToken) {
                 // set access token and try to fetch user object
-                Vue.SteemConnect().setAccessToken(accessToken);
-                Vue.SteemConnect().me(function (err, user) {
+                Vue.HiveSigner().setAccessToken(accessToken);
+                Vue.HiveSigner().me(function (err, user) {
                   if (err) reject(err);else {
                     // save user object in store
                     commit('login', user);

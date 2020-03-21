@@ -1,31 +1,31 @@
-# VueSteemConnect
+# VueHiveSigner
 
-This plugin provides a very simple way to integrate Steemconnect in your Vue.js project. It also provides a Vuex module to handle the user object and login/logout.
+This plugin provides a very simple way to integrate HiveSigner in your Vue.js project. It also provides a Vuex module to handle the user object and login/logout.
 
 ```
-npm i --save vue-steemconnect
+yarn add vue-hivesigner
 ```
 
 ```
 import Vue from 'vue'
-import VueSteemConnect from 'vue-steemconnect'
+import VueHiveSigner from 'vue-hivesigner'
 
-Vue.use(VueSteemConnect, {
+Vue.use(VueHiveSigner, {
   app: 'appname',
   callbackURL: 'http://localhost:3000'
   scope: ['vote', 'comment']
 })
 
-Vue.SteemConnect.getLoginURL()
-Vue.SteemConnect.vote(...)
-Vue.SteemConnect.comment(...)
+Vue.HiveSigner.getLoginURL()
+Vue.HiveSigner.vote(...)
+Vue.HiveSigner.comment(...)
 ```
 
 ```
 // in component
-this.$steemconnect.getLoginURL()
-this.$steemconnect.vote(...)
-this.$steemconnect.comment(...)
+this.$hivesigner.getLoginURL()
+this.$hivesigner.vote(...)
+this.$hivesigner.comment(...)
 ...
 ```
 
@@ -41,7 +41,7 @@ const store = new Vuex.Store({
     ...
   },
   modules: {
-    steemconnect: Vue.SteemConnectStore
+    hivesigner: Vue.HiveSignerStore
   }
 })
 ```
@@ -50,29 +50,29 @@ Now you can access the user object like this:
 
 ```
 // in component
-this.$store.state.steemconnect.user
+this.$store.state.hivesigner.user
 
 // or if you want to use the mapGetters helper
 computed: {
-  ...mapGetters('steemconnect', ['user'])
+  ...mapGetters('hivesigner', ['user'])
 } 
 ```
 
 To login/logout use:
 ```
-this.$store.dispatch('steemconnect/login')
-this.$store.dispatch('steemconnect/logout')
+this.$store.dispatch('hivesigner/login')
+this.$store.dispatch('hivesigner/logout')
 ```
 
 #### Nuxt.js
 
-*~/plugins/vue-steemconnect.js:*
+*~/plugins/vue-hivesigner.js:*
 
 ```
 import Vue from 'vue'
-import VueSteemConnect from 'vue-steemconnect'
+import VueHiveSigner from 'vue-hivesigner'
 
-Vue.use(VueSteemConnect, {
+Vue.use(VueHiveSigner, {
   app: 'mkt.test',
   callbackURL: 'http://localhost:3000/auth',
   scope: ['vote', 'comment']
@@ -83,6 +83,6 @@ Vue.use(VueSteemConnect, {
 
 ```
 plugins: [
-  '~/plugins/vue-steemconnect'
+  '~/plugins/vue-hivesigner'
 ],
 ```
